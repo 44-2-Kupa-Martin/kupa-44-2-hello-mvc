@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1 Hello MVC
+  p Enter the id of the user you're looking for
+  form.form-inline(action='/search' method='get')
+    div.form-group.mr-sm-3
+      input.form-control(type='text' name='id' placeholder='ID')
+    input.form-control.btn.btn-primary(type='submit' value='Buscar')
+  hr
+  if users
+    table.table.table-striped
+      thead.thead-dark
+        th Id
+        th Name
+        th Favorite color
+        th Weight (Kg)
+        th Favorite show
+      tbody
+        each user in users
+            tr
+                td= user.id
+                td= user.name
+                td= user.fcolor
+                td= user.weight
+                td= user.fshow
+  else
+    h3 no results
+  hr
+  h4 More information in
+    a(href='#') MDN
